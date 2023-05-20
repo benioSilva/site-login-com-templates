@@ -59,3 +59,6 @@ getElementById(btnCreateAccountId).addEventListener('click', function (event) {
     }
 
 })
+function onClickReturnLogin(){
+    window.location.href = "file:///home/marcos/Desktop/ESTUDOS/site%20de%20registro%20com%20template/coreui-free-bootstrap-admin-template-main/dist/login-mod.html"
+}

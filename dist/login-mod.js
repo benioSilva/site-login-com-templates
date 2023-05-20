@@ -4,15 +4,19 @@ function onclickReturnRegister() {
 var usernameLoginId = "usernameLogin"
 var passwordLoginId = "passwordLogin"
 var btnLogin = "btnLogin"
-var cadastrosAtivosKey = "cadastrosAtivos"
+//var cadastrosAtivosKey = "cadastrosAtivos"
+var dadosGeraisKey = "dadosGerais"
 function getElementById(id) {
     return document.getElementById(id)
 }
-function getCadastrosAtivos() {
-    const storageCadastrosAtivos = localStorage.getItem(cadastrosAtivosKey)
-    return JSON.parse(storageCadastrosAtivos) || []
+// function getCadastrosAtivos() {
+//     const storageCadastrosAtivos = localStorage.getItem(cadastrosAtivosKey)
+//     return JSON.parse(storageCadastrosAtivos) || []
+// }
+function getDadosGeraisStorage() {
+    const storageDadosGerais = localStorage.getItem(dadosGeraisKey)
+    return JSON.parse(storageDadosGerais) || []
 }
-
 function confirmarCampos() {
     if (!getElementById(usernameLoginId).value) {
         alert("preencher campo username")
@@ -33,12 +37,12 @@ function acessarPage() {
 }
 
 function validarLogin(){
-    let realocandoAtivo = getCadastrosAtivos()
+    let realocandoAtivo = getDadosGeraisStorage()
     realocandoAtivo = realocandoAtivo.filter(function(element, index){
-       return element.usernameAtivo == getElementById(usernameLoginId).value
+       return element.usernameRegistro == getElementById(usernameLoginId).value
     })
     if(realocandoAtivo.length == 1){
-        if(realocandoAtivo[0].passwordAtivo == getElementById(passwordLoginId).value){
+        if(realocandoAtivo[0].passwordRegistro == getElementById(passwordLoginId).value){
             window.location.href = "file:///home/marcos/Desktop/ESTUDOS/site%20de%20registro%20com%20template/coreui-free-bootstrap-admin-template-main/dist/base/tabela-de-cadastros.html"
             return
         }

@@ -11,10 +11,10 @@ function getDadosGeraisStorage() {
     const storageDadosGerais = localStorage.getItem(dadosGeraisKey)
     return JSON.parse(storageDadosGerais) || []
 }
-function getCadastrosAtivos(){
-    const storageCadastrosAtivos = localStorage.getItem(cadastrosAtivosKey)
-    return JSON.parse(storageCadastrosAtivos) || []
-}
+// function getCadastrosAtivos(){
+//     const storageCadastrosAtivos = localStorage.getItem(cadastrosAtivosKey)
+//     return JSON.parse(storageCadastrosAtivos) || []
+// }
 preencherLista()
 function preencherLista() {
     getElementById(corpoTabela).innerHTML = ""
@@ -41,7 +41,7 @@ function onClickAlterar(index) {
         localStorage.setItem(dadosGeraisKey, JSON.stringify(realocandoStorage))
     }
     preencherLista()
-    dadosAtivados(index)
+    //dadosAtivados(index)
 
 }
 
@@ -54,23 +54,23 @@ function onClickExcluir(param) {
     preencherLista()
 }
 
-function dadosAtivados(indexParam){
-    const realocandoStorage = getDadosGeraisStorage()
-    if (realocandoStorage[indexParam].status == "Desativado"){
-       let realocandoAtivo = getCadastrosAtivos()
-       realocandoAtivo = realocandoAtivo.filter(function (element, index){
-        return indexParam != index
-       })
-       localStorage.setItem(cadastrosAtivosKey, JSON.stringify(realocandoAtivo))
+// function dadosAtivados(indexParam){
+//     const realocandoStorage = getDadosGeraisStorage()
+//     if (realocandoStorage[indexParam].status == "Desativado"){
+//        let realocandoAtivo = getCadastrosAtivos()
+//        realocandoAtivo = realocandoAtivo.filter(function (element, index){
+//         return indexParam != index
+//        })
+//        localStorage.setItem(cadastrosAtivosKey, JSON.stringify(realocandoAtivo))
        
-    } else if (realocandoStorage[indexParam].status == "Ativado"){
-        let dadosParaLogin = {
-            usernameAtivo: realocandoStorage[indexParam].usernameRegistro,
-            passwordAtivo: realocandoStorage[indexParam].passwordRegistro
-        }
-        const realocandoAtivo = getCadastrosAtivos()
-        realocandoAtivo.push(dadosParaLogin)
-        localStorage.setItem(cadastrosAtivosKey, JSON.stringify(realocandoAtivo))
-        preencherLista()
-    }
-}
+//     } else if (realocandoStorage[indexParam].status == "Ativado"){
+//         let dadosParaLogin = {
+//             usernameAtivo: realocandoStorage[indexParam].usernameRegistro,
+//             passwordAtivo: realocandoStorage[indexParam].passwordRegistro
+//         }
+//         const realocandoAtivo = getCadastrosAtivos()
+//         realocandoAtivo.push(dadosParaLogin)
+//         localStorage.setItem(cadastrosAtivosKey, JSON.stringify(realocandoAtivo))
+//         preencherLista()
+//     }
+// }
